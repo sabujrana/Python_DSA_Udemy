@@ -65,7 +65,22 @@ class LinkedList:
         self.length = 1
 
 """
+##LL: Constructor code 
+"""
+class Node: 
 
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+class LinkedList:
+
+    def __init__(self, value):
+        new_node = Node(value)
+        self.head = new_node
+        self.tail = new_node
+        self.length = 1
+"""
 """
 
 LL: Constructor
@@ -93,9 +108,9 @@ A length attribute, initialized to 1, which represents the current number of nod
 
 
 
-"""
-## Constructor code 
 
+"""
+# Soltuion:
 class Node: 
     
     def __init__(self, value):
@@ -116,12 +131,37 @@ print("Head value = ",my_linked_list.head.value) #print value
 print("Tail value = ",my_linked_list.tail.value)
 print("Length = ",my_linked_list.length)
 
-## print code 
+
+###LL: print code 
+
+"""
+def print_code(self):
+    temp = self.head
+    while temp is not None:
+        print(temp.value)
+        temp = temp.next
+"""
+
+
+### LL: append 
+"""
+def append(self, value):
+    new_node = Node(value)
+    if self.head is None:
+        self.head = new_node
+        self.tail = new_node
+    else:
+        self.tail.next = new_node
+        self.tail = new_node
+    self.length +=1
+    return 1
+"""       
+### Combined code of constructor with print function and append 
 
 class Node: 
 
-    def __init(self, value):
-        self.value = value
+    def __init__(self, value):
+        self. value = value
         self.next = None
 
 class LinkedList:
@@ -134,12 +174,117 @@ class LinkedList:
 
     def print_list(self):
         temp = self.head
-        if temp is not None:
-            print(temp.head)
-            temp = temp.next
+        while temp is not None:
+            print(temp.value)
+            temp = temp.next #**
 
-### LL: append 
+    def append(self, value):
+        new_node = Node(value)
+        if self.length == 0: #**
+            self.head = new_node
+            self.tail = new_node
+        else: 
+            self.tail.next = new_node
+            self.tail = new_node #**
+        self.length += 1
+
+my_linked_list = LinkedList(2)
+my_linked_list.append(3)
+my_linked_list.append(5)
+my_linked_list.print_list()
+            
+##Pop code
+"""
+def pop(self):
+    if self.length == 0:
+        return None
+    temp = self.head
+    pre = self.head
+    while temp.next: #that means temp.next is not Nonen
+        pre = temp
+        temp = temp.next
+    self.tail = pre
+    self.tail.next = None
+    self.length -= 1
+    if self.length == 0:
+        self.head = None
+        self.tail = None
+    return temp
+
+"""
+
+#Full code till pop
+
 class Node: 
 
-    def __ini__(self, value):
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+
+class LinkedList: 
+
+    def __init__(self, value):
+        new_node = Node(value)
+        self.head = new_node
+        self.tail = new_node
+        self.length = 1
+
+    
+    def print_list(self):
+        temp = self.head
+        while temp != None:
+            print(temp.value)
+            temp = temp.next
+
+    def append(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+
+        else:
+            self.tail.next = new_node
+            self.tail = new_node
+        self.length += 1
+
+
+    def pop(self):
+
+        if self.length == 0:
+            return None
+        temp = self.head
+        pre = self.head
+        while temp.next:
+            pre = temp
+            temp = temp.next
+        self.tail = pre
+        self.tail.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.head = 0
+            self.tail = 0
+        return temp
+        # return temp.value #to check te poped value
+
+my_linked_list = LinkedList(2)
+my_linked_list.append(3)
+
+#printing the list
+
+# my_linked_list.print_list()
+
+#2 items - returns 2 nodes
+print(my_linked_list.pop())
+
+#1 items - returns 1 nodes
+print(my_linked_list.pop())
+
+#0 items - returns None
+print(my_linked_list.pop())
+
+
+
+
+
+
 
