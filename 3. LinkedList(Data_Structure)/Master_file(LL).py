@@ -929,3 +929,161 @@ my_linked_list.print_list()
 my_linked_list.remove(2)
 print("Final List:")
 my_linked_list.print_list()
+
+#Reverse of linked list
+
+##Code
+
+"""
+def reverse(self):
+    temp = self.head 
+    self.head = self.tail 
+    self.tai = temp
+    after = temp.next
+    before = None
+    for _ in range(self.length):
+        after = temp.next
+        temp.next = before
+        before = temp
+        temp = after
+
+
+"""
+
+class Node:
+    def __init__(self, value):
+        self.value = value #assign value 
+        self.next = None 
+
+class LinkedList:
+    def __init__(self, value):
+        #constructing node and added value 
+        new_node = Node(value)
+        self.head = new_node
+        self.tail = new_node
+        self.length = 1
+
+    def print_list(self):
+        temp = self.head #pointing head by temp
+        while temp: #checking if temp is None i.e empty list   
+            print(temp.value) #printing the value by calling pointer with value
+            temp = temp.next #updating pointer
+        return True
+
+    def append(self, value):
+        new_node = Node(value) #adding node
+        if self.length == 0: #checking for empty list
+            self.head = new_node #update with new_node value in case of empty 
+            self.tail = new_node
+        else:
+            self.tail.next = new_node #pointing tail pointer to new node 
+            self.tail = new_node #pointing added new node by tail
+        self.length += 1 
+        return True
+
+    def pop(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        pre = self.head 
+        while temp.next:
+            pre = temp
+            temp = temp.next
+        self.tail = pre
+        self.tail.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.head = None
+            self.tail = None
+        return temp
+
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True
+
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.tail = None
+        return temp
+
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp
+
+    def set(self, index, value):
+        temp = self.get(index)
+        if temp:  # Check if the node exists
+            temp.value = value
+            return True
+        return False  # Return False if the index is invalid
+
+    def insert(self, index, value):
+        if index < 0 or index > self.length:
+            return False
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        new_node = Node(value)
+        temp = self.get(index - 1)
+        new_node.next = temp.next
+        temp.next = new_node
+        self.length += 1
+        return True
+
+
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+
+        if index == 0:
+            return self.pop_first()
+        
+        if index == self.length -1:
+            return self.pop()
+        pre = self.get(index-1)
+        temp = pre.next
+        pre.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
+    
+    def reverse(self):
+        temp = self.head 
+        self.head = self.tail 
+        self.tail = temp
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+        return True
+    
+my_linked_list = LinkedList(1)
+my_linked_list.append(2)
+my_linked_list.append(3)
+my_linked_list.append(4)
+print("List before reverse: ")
+my_linked_list.print_list()
+my_linked_list.reverse()
+print("List after reverse: ")
+my_linked_list.print_list()
