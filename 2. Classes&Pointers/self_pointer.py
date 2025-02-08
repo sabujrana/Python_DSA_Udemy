@@ -21,6 +21,9 @@ print("num2 = ", num2)
 print("Num1 points to: ", id(num1))
 print("num2 points to: ", id(num2))
 
+#for immutable data types if we assign some value for variable in specific memory location then we can't change the value
+
+
 #Dictionary
 
 dict1 = {

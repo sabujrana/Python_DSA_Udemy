@@ -81,3 +81,46 @@ node2 = Node(4)
 
 """
 
+
+ 
+#Define the class node
+class Node: 
+    
+    def __init__(self, value):
+        self.value = value # Each node holds a value
+        self.next = None # Each node has a pointer to the next node, initially set to None
+
+# Define the LinkedList class
+class LinkedList:
+    
+    def __init__(self, value):
+        # Create a new node with the given value
+        new_node = Node(value)
+        
+        # Set the head of the linked list to point to new node
+        self.head = new_node
+
+        # Set the tail of the linked list to point to new node
+        self.tail = new_node
+
+        # Initialize length of linked list to 1(since it has one node)
+        self.length = 1
+
+my_linked_list = LinkedList(4)
+
+print('Head:', my_linked_list.head.value)
+print('Tail:', my_linked_list.tail.value)
+print('Length:', my_linked_list.length)
+
+
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    Head: 4
+    Tail: 4
+    Length: 1
+    
+"""
+
+                                                                                                                    
